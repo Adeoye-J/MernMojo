@@ -46,6 +46,7 @@ const FacebookAuth = () => {
 
   return (
     <div>
+      <h1>Mojo Web Insights</h1>
       {!userData ? (
         <FacebookProvider appId="2269414253411989">
           <LoginButton

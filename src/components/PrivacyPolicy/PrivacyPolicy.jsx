@@ -64,7 +64,7 @@ const PrivacyPolicy = () => {
       <h2>Contact Us</h2>
       <p>
         If you have any questions or concerns about this Privacy Policy, please
-        contact us at <a href="mailto:support@example.com">support@example.com</a>.
+        contact us at <a href="mailto:support@example.com">r16172717@gmail.com</a>.
       </p>
     </div>
   );
@@ -74,7 +74,7 @@ const styles = {
   container: {
     maxWidth: '800px',
     margin: '0 auto',
-    backgroundColor: '#fff',
+    // backgroundColor: '#fff',
     padding: '20px',
     borderRadius: '5px',
     boxShadow: '0 0 10px rgba(0, 0, 0, 0.1)',

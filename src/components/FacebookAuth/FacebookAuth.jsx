@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import FacebookLogin from 'react-facebook-login';
+import { FacebookProvider, LoginButton } from 'react-facebook';
 import axios from 'axios';
 
 const FacebookAuth = () => {
@@ -13,13 +13,13 @@ const FacebookAuth = () => {
   const responseFacebook = (response) => {
     console.log(response);
     setUserData({
-      name: response.name,
-      picture: response.picture.data.url,
-      accessToken: response.accessToken, // Save access token
+      name: response.profile.name,
+      picture: response.profile.picture.data.url,
+      accessToken: response.tokenDetail.accessToken, // Save access token
     });
 
     // Fetch user's pages
-    axios.get(`https://graph.facebook.com/me/accounts?access_token=${response.accessToken}`)
+    axios.get(`https://graph.facebook.com/me/accounts?access_token=${response.tokenDetail.accessToken}`)
       .then((res) => {
         console.log(res.data.data);
         setPages(res.data.data);
@@ -47,12 +47,14 @@ const FacebookAuth = () => {
   return (
     <div>
       {!userData ? (
-        <FacebookLogin
-          appId="2269414253411989" // Replace with your Facebook App ID
-          autoLoad={false}
-          fields="name,picture"
-          callback={responseFacebook}
-        />
+        <FacebookProvider appId="2269414253411989">
+          <LoginButton
+            onCompleted={responseFacebook}
+            onError={(error) => console.error(error)}
+          >
+            <span>Login via Facebook</span>
+          </LoginButton>
+        </FacebookProvider>
       ) : (
         <div>
           <h1>Welcome, {userData.name}</h1>

@@ -97,7 +97,7 @@ const FacebookAuth = () => {
     <div>
       {!userData ? (
         <div>
-          <h2>Login with Facebook</h2>
+          <h2>Mojo Web Insight</h2>
           <button
             onClick={() =>
               FB.login(statusChangeCallback, { scope: 'public_profile,email,pages_show_list' })

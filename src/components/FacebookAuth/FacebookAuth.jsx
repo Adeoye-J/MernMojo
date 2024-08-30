@@ -13,10 +13,10 @@ const FacebookAuth = () => {
     // Load the Facebook SDK for JavaScript
     window.fbAsyncInit = function () {
       FB.init({
-        appId: '2269414253411989', // Replace with your Facebook App ID
+        appId: '2269414253411989',
         cookie: true,
         xfbml: true,
-        version: 'v20.0', // Replace with the API version you want to use
+        version: 'v20.0',
       });
 
       // Check if the user is already logged in when the page loads
@@ -78,21 +78,44 @@ const FacebookAuth = () => {
     fetchPageInsights(e.target.value);
   };
 
+  // const fetchPageInsights = (pageId) => {
+  //   const accessToken = userData.accessToken;
+  //   const since = sinceDate ? `&since=${sinceDate}` : '';
+  //   const until = untilDate ? `&until=${untilDate}` : '';
+  //   axios
+  //     .get(
+  //       `https://graph.facebook.com/${pageId}/insights?metric=page_fans,page_engaged_users,page_impressions,page_actions_post_reactions_total&access_token=${accessToken}${since}${until}&period=total_over_range`
+  //     )
+  //     .then((res) => {
+  //       console.log(res.data.data);
+  //       setPageInsights(res.data.data);
+  //     })
+  //     .catch((err) => console.log(err));
+  // };
+
+
   const fetchPageInsights = (pageId) => {
+    if (!userData || !userData.accessToken) {
+      console.error("Access token is missing or user is not logged in.");
+      return;
+    }
+  
     const accessToken = userData.accessToken;
     const since = sinceDate ? `&since=${sinceDate}` : '';
     const until = untilDate ? `&until=${untilDate}` : '';
-    axios
-      .get(
-        `https://graph.facebook.com/${pageId}/insights?metric=page_fans,page_engaged_users,page_impressions,page_actions_post_reactions_total&access_token=${accessToken}${since}${until}&period=total_over_range`
-      )
+  
+    const url = `https://graph.facebook.com/${pageId}/insights?metric=page_fans,page_engaged_users,page_impressions,page_actions_post_reactions_total&access_token=${accessToken}${since}${until}&period=total_over_range`;
+  
+    axios.get(url)
       .then((res) => {
         console.log(res.data.data);
         setPageInsights(res.data.data);
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        console.error("Error fetching page insights:", err);
+      });
   };
-
+  
   return (
     <div>
       {!userData ? (

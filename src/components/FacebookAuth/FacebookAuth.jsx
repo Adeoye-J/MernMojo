@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import "./facebookAuth.css"
 
 const FacebookAuth = () => {
   const [userData, setUserData] = useState(null);
@@ -78,22 +79,6 @@ const FacebookAuth = () => {
     fetchPageInsights(e.target.value);
   };
 
-  // const fetchPageInsights = (pageId) => {
-  //   const accessToken = userData.accessToken;
-  //   const since = sinceDate ? `&since=${sinceDate}` : '';
-  //   const until = untilDate ? `&until=${untilDate}` : '';
-  //   axios
-  //     .get(
-  //       `https://graph.facebook.com/${pageId}/insights?metric=page_fans,page_engaged_users,page_impressions,page_actions_post_reactions_total&access_token=${accessToken}${since}${until}&period=total_over_range`
-  //     )
-  //     .then((res) => {
-  //       console.log(res.data.data);
-  //       setPageInsights(res.data.data);
-  //     })
-  //     .catch((err) => console.log(err));
-  // };
-
-
   const fetchPageInsights = (pageId) => {
     if (!userData || !userData.accessToken) {
       console.error("Access token is missing or user is not logged in.");
@@ -119,8 +104,9 @@ const FacebookAuth = () => {
   return (
     <div>
       {!userData ? (
-        <div>
+        <div className='welcome-content'>
           <h2>Mojo Web Insight</h2>
+          <p>Get Insights on your pages on facebook</p>
           <button
             onClick={() =>
               FB.login(statusChangeCallback, { scope: 'public_profile,email,pages_show_list' })
@@ -130,12 +116,14 @@ const FacebookAuth = () => {
           </button>
         </div>
       ) : (
-        <div>
+        <div className='main-content'>
           <h1>Welcome, {userData.name}</h1>
-          <img src={userData.picture.data.url} alt="User Profile" />
+          <div className="image-container">
+            <img src={userData.picture.data.url} alt="User Profile" />
+          </div>
 
           {pages.length > 0 ? (
-            <div>
+            <div className='page-form-container'>
               <h2>Select a Page</h2>
               <select onChange={handlePageSelect} value={selectedPage}>
                 <option value="">Select Page</option>
@@ -150,7 +138,7 @@ const FacebookAuth = () => {
             <p>No pages created by the user.</p>
           )}
 
-          <div>
+          <div className='date-form-container'>
             <h2>Select Date Range</h2>
             <label>
               Since: <input type="date" value={sinceDate} onChange={(e) => setSinceDate(e.target.value)} />

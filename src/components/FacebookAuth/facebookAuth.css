@@ -1,0 +1,132 @@
+.welcome-content {
+    background-color: rgb(21, 230, 230);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    gap: 1rem;
+}
+
+.welcome-content h2 {
+    font-size: 2.5rem;
+    text-align: center;
+    font-weight: bold;
+    color: rgb(0, 0, 150);
+}
+
+.welcome-content p {
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+.welcome-content button {
+    height: 50px;
+    border-radius: 10px;
+    padding-inline: 1rem;
+    border: 2px solid blue;
+    background-color: lightblue;
+    font-weight: bold;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all ease .5s;
+}
+.welcome-content button:hover {
+    background-color: rgba(0, 0, 255, 0.61);
+    color: #fff;
+}
+
+
+
+.main-content {
+    background-color: rgb(21, 230, 230);
+    min-height: 100vh;
+    padding: 2rem;
+}
+
+.main-content h1 {
+    font-size: 2.5rem;
+    text-align: center;
+    font-weight: bold;
+    color: rgb(0, 0, 150);
+    margin-bottom: 2rem;
+}
+
+.image-container {
+    width: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    margin-bottom: 2rem;
+}
+
+
+.image-container img {
+    width: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.page-form-container h2 {
+    font-size: 1.9rem;
+    margin-bottom: 1rem;
+}
+
+.page-form-container select {
+    height: 50px;
+    padding-inline: 1rem;
+    font-size: 1.2rem;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-bottom: 2rem;
+}
+
+.date-form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.date-form-container h2 {
+    font-size: 1.9rem;
+    margin-bottom: 1rem;
+    /* text-decoration: underline; */
+    border-bottom: 8px double #00f;
+}
+
+.date-form-container label {
+    font-size: 1.5rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+.date-form-container label input {
+    height: 40px;
+    padding-inline: 1rem;
+    font-size: 1.2rem;
+    border-radius: 5px;
+    outline: none;
+    border: 2px solid blue;
+}
+
+.date-form-container button {
+    height: 50px;
+    border-radius: 10px;
+    padding-inline: 1rem;
+    border: 2px solid blue;
+    background-color: lightblue;
+    font-weight: bold;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all ease .5s;
+}
+
+.date-form-container button:hover {
+    background-color: rgba(0, 0, 255, 0.61);
+    color: #fff;
+}
